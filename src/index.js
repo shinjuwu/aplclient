@@ -22,7 +22,7 @@ const generateAsyncUrlGetter =
 export const UseWebSocketTester = ({}) => {
   const [currentSocketUrl, setCurrentSocketUrl] = useState(null);
   const [messageHistory, setMessageHistory] = useState([]);
-  const [inputtedMessage, setInputtedMessage] = useState('{"Login":{"token":"","gameCode":"STHG"}}');
+  const [inputtedMessage, setInputtedMessage] = useState('{"Login":{"token":"","gameCode":"STLB","account":"simon"}}');
   const { sendMessage, lastMessage, readyState } = useWebSocket(
     currentSocketUrl,
     {
@@ -54,10 +54,15 @@ export const UseWebSocketTester = ({}) => {
           onChange={(e) => setInputtedMessage(e.target.value)}
         /> */}
         <select onChange={(e)=>handleChange(e)}>
-          <option value='{"Login":{"token":"","gameCode":"STHG"}}'>login</option>
-          <option value='{"EnterGame":{"game_id":2001}}'>EnterGame</option>
-          <option value='{"Spin":{"bet":10000,"betLines":20,"betMultiple":1}}'>Spin</option>
-          <option value='{"BonusSpin":{"bet":10000,"betLines":20,"betMultiple":1}}'>BonusSpin</option>
+          <option value='{"Login":{"token":"","gameCode":"STLB"}}'>login</option>
+          <option value='{"EnterGame":{"game_id":2007}}'>EnterGame</option>
+          <option value='{"Spin":{"bet":10000,"betLines":20,"betMultiple":1000}}'>Spin</option>
+          <option value='{"BonusSpin":{"bet":10000,"betLines":20,"betMultiple":1000}}'>BonusSpin</option>
+          <option value='{"HotShot":{}}'>HotShot</option>
+          <option value='{"FreeSpin":{}}'>FreeSpin</option>
+          <option value='{"FeverSpin":{}}'>FeverSpin</option>
+          <option value='{"SpinDemo":{"bet":10000,"betLines":20,"betMultiple":1,"dramaNo":27,"dramaNoHSG":22}}'>SpinDemo</option>
+          <option value='{"BonusDemo":{"bet":10000,"betLines":20,"betMultiple":1,"dramaNo":5}}'>BonusDemo</option>
         </select>
         <button
           onClick={() => sendMessage(inputtedMessage)}
